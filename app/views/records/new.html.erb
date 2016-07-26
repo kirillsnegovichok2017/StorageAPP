@@ -1,2 +1,19 @@
-<h1>Records#new</h1>
-<p>Find me in app/views/records/new.html.erb</p>
+<% if @record.errors.any? %>
+  <div class="alert alert-error">
+    <ul>
+      <%= @record.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="well">
+  <%= form_for @record, html: { multipart:true } do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%=f.label :attachment %>
+      <%= f.file_field :attachment %>
+      <%= f.submit "Save", class: "btn btn-promary" %>
+  <% end %>
+</div>

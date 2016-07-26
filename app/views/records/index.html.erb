@@ -15,5 +15,14 @@
     <th>&nbsp;</th>
   </tr>
   </thead>
+  <tbody>
+    <% @records.each do |record| %>
+    <tr>
+      <td><%= record.name %></td>
+      <td><%= link_to "Download File", record.attachment_url %></td>
+      <td><%= button_to "Delete", record, method: :delete, class: "btn btn-danger", comfirm: "Are you sure that you with to delete #{record.name}?" %></td>
+    </tr>
+    <% end %>
+  </tbody>
 </table>
 

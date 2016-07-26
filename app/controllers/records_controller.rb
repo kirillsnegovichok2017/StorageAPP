@@ -26,6 +26,6 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:name)
+    params.require(:record).permit(:name, :attachment)
   end
 end
