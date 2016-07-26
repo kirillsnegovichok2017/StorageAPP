@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'records#index'
+  # get 'records/home'
+  # get 'records/new'
+  # get 'records/create'
+  # get 'records/destroy'
+  resources :records, only: [:index, :new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
