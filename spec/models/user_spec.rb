@@ -1,9 +1,10 @@
 require 'rails_helper'
+require 'database_cleaner'
 
 RSpec.describe User, type: :model do
 
   before :all do
-    @user = User.new(name: "User Name", email: "user@gmail.com")
+    @user = create(:user)
   end
 
   before :each do
@@ -14,6 +15,11 @@ RSpec.describe User, type: :model do
   it "should be valid" do
     expect(@user).to be_valid
   end
+
+  it "should have root folder" do
+    expect(@user.folders.find_by(name: "root")).not_to be nil
+  end
+
 
   it "name should be valid" do
     @user.name = "    "
@@ -28,6 +34,15 @@ RSpec.describe User, type: :model do
     end
   end
 
+  it "emails not to be valid" do
+    invalid_emails = %w[rufs.gmail.com roierjAF@mailru ]
+    invalid_emails.each do |invalid_email|
+      @user.email = invalid_email
+      expect(@user).not_to be_valid
+    end
+  end
+
+
   it "name length should not be longer then 50 chars" do
     @user.name = "a" * 51
     expect(@user).not_to be_valid
@@ -36,6 +51,11 @@ RSpec.describe User, type: :model do
   it "email should not be longer then 255 chars" do
     @user.email = "e" * 256
     expect(@user).not_to be_valid
+  end
+
+  after(:all) do
+    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
   end
 
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160728105750) do
+ActiveRecord::Schema.define(version: 20160729092202) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,10 +45,14 @@ ActiveRecord::Schema.define(version: 20160728105750) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "folder_id"
   end
+
+  add_index "users", ["folder_id"], name: "index_users_on_folder_id", using: :btree
 
   add_foreign_key "folders", "folders"
   add_foreign_key "folders", "users"
   add_foreign_key "records", "folders"
   add_foreign_key "records", "users"
+  add_foreign_key "users", "folders"
 end
