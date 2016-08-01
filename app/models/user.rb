@@ -13,12 +13,12 @@ class User < ActiveRecord::Base
   #validates :folder_id, presence: true
 
 
-  def root_folder
-    folders.find_by(name: 'root')
-  end
+  # def root_folder
+  #   folders.find_by(name: 'root')
+  # end
 
   private
   def create_root_folder
-    folders.create(name: "root", info: "root folder")
+    create_folder(name: "root", info: "root folder")
   end
 end

@@ -7,8 +7,7 @@ RSpec.describe Folder, type: :model do
   before(:all) do
     @user = create(:user)
     @folder_name = Faker::Lorem.word
-    @user.folders.create(name: @folder_name, info: Faker::Lorem.sentence)
-    @folder = @user.folders.find_by(name: @folder_name)
+    @folder = @user.folder
     #pp @folder
   end
 

@@ -7,10 +7,11 @@ RSpec.describe User, type: :model do
 
   before :all do
     @user = create(:user)
+    #pp @user.folder
   end
 
   before :each do
-    @user.name = "folder_name"
+    @user.name = "Alex"
     @user.email = "valid_email@gmail.com"
   end
 
@@ -19,7 +20,7 @@ RSpec.describe User, type: :model do
   end
 
   it "should have root folder" do
-    expect(@user.folders.find_by(name: "root")).not_to be nil
+    expect(@user.folder.name).to eq("root")
   end
 
 
