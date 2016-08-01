@@ -1,7 +1,6 @@
 class Folder < ActiveRecord::Base
-  belongs_to :folder
   belongs_to :user
-  has_many :folders
+  has_many :records
 
   validates :name, presence: true , length: {maximum: 50 }
   #validates :info, presence: true

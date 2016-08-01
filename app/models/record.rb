@@ -1,5 +1,4 @@
 class Record < ActiveRecord::Base
-  belongs_to :user
   belongs_to :folder
 
   mount_uploader :attachment, FileUploader # Tells rails to use this uploader for this model.

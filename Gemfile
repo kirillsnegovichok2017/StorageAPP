@@ -46,7 +46,7 @@ group :development, :test do
   gem 'puma'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'faker'
+  gem 'faker', github: 'stympy/faker'
   gem 'guard-rspec', require: false
 end
 

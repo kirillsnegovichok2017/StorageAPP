@@ -6,9 +6,10 @@ RSpec.describe Folder, type: :model do
 
   before(:all) do
     @user = create(:user)
-    @user.folders.create(name: "myfolder", info: "some info")
-    @folder = @user.folders.find_by(name:"myfolder")
-    pp @user
+    @folder_name = Faker::Lorem.word
+    @user.folders.create(name: @folder_name, info: Faker::Lorem.sentence)
+    @folder = @user.folders.find_by(name: @folder_name)
+    #pp @folder
   end
 
   it "folder should be valid" do

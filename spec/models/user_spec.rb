@@ -1,5 +1,7 @@
 require 'rails_helper'
 require 'database_cleaner'
+require 'pp'
+
 
 RSpec.describe User, type: :model do
 
@@ -8,7 +10,7 @@ RSpec.describe User, type: :model do
   end
 
   before :each do
-    @user.name = "valid name"
+    @user.name = "folder_name"
     @user.email = "valid_email@gmail.com"
   end
 

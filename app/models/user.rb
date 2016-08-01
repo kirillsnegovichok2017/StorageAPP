@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   after_create :create_root_folder
 
-  has_many :folders, dependent: :destroy
-  has_many :records, dependent: :destroy
+  has_one :folder, dependent: :destroy
+  has_many :records, through: :folder
 
 
 
@@ -12,6 +12,10 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 }, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensetive: false}
   #validates :folder_id, presence: true
 
+
+  def root_folder
+    folders.find_by(name: 'root')
+  end
 
   private
   def create_root_folder

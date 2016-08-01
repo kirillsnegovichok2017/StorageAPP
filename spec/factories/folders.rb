@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :folder do
-    name "home"
-    email "wefwef@gmail.com"
+    name { Faker::Lorem.word }
+    info { Faker::Lorem.sentence }
   end
 end
