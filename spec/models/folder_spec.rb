@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'database_cleaner'
+require 'pp'
 
 RSpec.describe Folder, type: :model do
 
@@ -7,6 +8,7 @@ RSpec.describe Folder, type: :model do
     @user = create(:user)
     @user.folders.create(name: "myfolder", info: "some info")
     @folder = @user.folders.find_by(name:"myfolder")
+    pp @user
   end
 
   it "folder should be valid" do
