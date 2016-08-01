@@ -4,6 +4,6 @@ class Folder < ActiveRecord::Base
   has_many :folders
 
   validates :name, presence: true , length: {maximum: 50 }
-  validates :info, presence: true
+  #validates :info, presence: true
   validates :user_id, presence: true
 end

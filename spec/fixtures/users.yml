@@ -1,9 +1,0 @@
-rufus:
-  name: Alexander
-  email: veimar.94@gmail.com
-
-<% 5.times do |n| %>
-user_<%= n %>:
-  name: <%= "User #{n}" %>
-  email: <%= "user-#{n}@gmail.com" %>
-<% end %>

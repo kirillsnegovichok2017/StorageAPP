@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :record do
-    name "file.txt"
-    attachment "attachment url"
+    name  { Faker::File.file_name('root/') }
+    attachment  { Faker::Internet.url }
   end
 end
