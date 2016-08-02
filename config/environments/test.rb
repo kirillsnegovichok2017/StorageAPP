@@ -36,7 +36,8 @@ Rails.application.configure do
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
-
+  # clears rspec output from SQL flood!!!!
+  config.log_level = :error
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 end

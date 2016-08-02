@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
-  <title>StorageApp</title>
+  <title>Storage</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="container" style="padding-top:20px;">
+    <%= render 'layouts/header' %>
+    <%= yield %>
+  </div>
 </body>
 </html>
