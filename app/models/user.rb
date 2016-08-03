@@ -1,13 +1,11 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  before_save {email.downcase!}
+  # before_save {email.downcase!}
   after_create :create_root_folder
 
   has_one :folder, dependent: :destroy
   has_many :records, through: :folder
-
-  attr_accessor :name, :email
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 

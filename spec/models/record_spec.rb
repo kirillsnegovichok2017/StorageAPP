@@ -20,7 +20,7 @@ RSpec.describe Record, type: :model do
   it "user can get created file throw folder" do
     f = @user.folder.records.find_by(name: @file_name)
     expect(f).not_to be nil
-    pp f
+    #pp f
   end
 
   after(:all) do
