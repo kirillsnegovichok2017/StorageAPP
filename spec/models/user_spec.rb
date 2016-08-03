@@ -56,6 +56,12 @@ RSpec.describe User, type: :model do
     expect(@user).not_to be_valid
   end
 
+  it "password should have a minimum length" do
+    @user.password = @user.password_confirmation = "a" * 5
+    expect(@user).not_to be_valid
+  end
+
+
   after(:all) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean
