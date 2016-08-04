@@ -5,11 +5,17 @@ feature 'Visitor signs up' do
 
   scenario 'with valid email and password' do
     user = build(:user)
-    pp user
     expect{
       sign_up_with user
-    }.to change{User.count}.by(1)
-   expect(page).to have_content(success_signup_message(user))
+    }.to change{User.count and Folder.count}.by(1)
+    expect(page).to have_content(success_signup_message(user))
+  end
+
+  scenario 'with user duplication' do
+    user = create(:user)
+    expect{
+      sign_up_with user
+    }.not_to change{User.count or Folder.count}
   end
 
 
