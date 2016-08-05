@@ -1,19 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe RecordsController, type: :controller do
+  include SessionsHelper
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #new" do
-    it "returns http success" do
-      get :new
-      expect(response).to have_http_status(:success)
-    end
-  end
+  # describe "GET #create" do
+  #   it "upload new record with success" do
+  #
+  #     post :create, :record => {name: 'file.txt', attachment: 'file.txt'}
+  #     pp current_user
+  #     expect(response).to redirect_to current_user
+  #   end
+  # end
 
 end

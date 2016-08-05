@@ -8,7 +8,6 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user and user.authenticate(params[:session][:password])
       log_in user
-      debugger
       redirect_to user
     else
       flash.now[:error] = login_err_msg
@@ -17,6 +16,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+    log_out
+    redirect_to root_url
   end
 
 end
