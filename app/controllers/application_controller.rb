@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def authorization_filter
     unless logged_in?
+      store_location
       flash[:error] = 'Please log in.'
       redirect_to login_url
     end

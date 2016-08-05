@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
   include SessionsHelper
 
   before_action :authorization_filter
-  before_action :ownership_filter
+  before_action :ownership_filter, unless: [:new]
 
   def index
     #@records = Record.all
@@ -34,6 +34,7 @@ class RecordsController < ApplicationController
   private
 
   def record_params
-    params.require(:record).permit(:name, :attachment)
+    params.require(:record).permit(:attachment)
   end
+
 end

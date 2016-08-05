@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email])
     if user and user.authenticate(params[:session][:password])
       log_in user
-      redirect_to user
+      redirect_back_or user
     else
       flash.now[:error] = login_err_msg
       render 'new'

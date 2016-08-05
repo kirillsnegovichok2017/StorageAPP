@@ -2,8 +2,6 @@
   <div class="jumbotron col-md-6 col-md-offset-3">
     <%= form_for @record, html: { multipart:true } do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <%= f.label :name %>
-        <%= f.text_field :name, class: 'form-control' %>
         <%=f.label :attachment %>
         <%= f.file_field :attachment, class: 'btn btn-default btn-file' %>
         <%= f.submit "Save", class: "btn btn-primary" %>
