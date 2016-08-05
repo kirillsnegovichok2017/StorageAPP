@@ -1,7 +1,18 @@
 <tr>
   <td><%= record.name %></td>
-  <td><%= link_to "Download File", record.attachment_url %></td>
+  <td><%= link_to "Download File", record.url %></td>
   <td><%= record.type %></td>
   <td><%= record.size %></td>
-  <td><%= button_to "Delete", record, method: :delete, class: "btn btn-danger", comfirm: "Are you sure that you with to delete #{record.name}?" %></td>
+
+  <td class="dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+        Actions<b class="caret"></b>
+      </a>
+      <ul class="dropdown-menu">
+        <li><%= button_to "Delete", record, method: :delete, class:'btn', data: { confirm: "Are you sure that you with to delete #{record.name}?" }%></li>
+        <li><%= button_to "Rename", record, method: :delete, class:'btn', data: { confirm: "Are you sure that you with to rename #{record.name}?" }%></li>
+        <li class="divider"></li>
+        <li><%= link_to 'share', record_path, method: 'link', class: "btn" %> </li>
+      </ul>
+  </td>
 </tr>
