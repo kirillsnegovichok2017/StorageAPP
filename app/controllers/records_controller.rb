@@ -1,6 +1,9 @@
 class RecordsController < ApplicationController
   include SessionsHelper
 
+  before_action :authorization_filter
+  before_action :ownership_filter
+
   def index
     #@records = Record.all
     @records = current_user.folder.records.all

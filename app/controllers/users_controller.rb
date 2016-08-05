@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   include UsersHelper
 
-  before_action :logged_in_user, only: [:show]
+  before_action :authorization_filter, only: [:show]
+  before_action :ownership_filter
 
   def new
     @user = User.new
@@ -19,7 +20,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @records = @user.folder.records
-    debugger
   end
 
 

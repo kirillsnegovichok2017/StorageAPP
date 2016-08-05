@@ -5,11 +5,16 @@ class ApplicationController < ActionController::Base
 
   include SessionsHelper
 
-  def logged_in_user
+  def authorization_filter
     unless logged_in?
       flash[:error] = 'Please log in.'
       redirect_to login_url
     end
+  end
+
+  def ownership_filter
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless owner?(@user)
   end
 
 end
