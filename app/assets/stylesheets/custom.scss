@@ -1,9 +1,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+$gray-medium-light: #eaeaea;
+$frame-opacity: 0.5;
+
+@mixin border-radius($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius; /* future proofing */
+  -khtml-border-radius: $radius; /* for old Konqueror browsers */
+  -ms-border-radius: $radius;
+}
+
+@mixin bold-text {
+  font-weight: bold;
+}
 
 /*logo title*/
-
 #logo {
   float: left;
   margin-right: 10px;
@@ -61,4 +74,77 @@
   background: white;
   cursor: inherit;
   display: block;
+}
+
+
+/* footer */
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+}
+footer a {
+  color: $gray;
+}
+footer a:hover {
+  color: $gray-darker;
+}
+footer small {
+  float: left;
+}
+footer ul {
+  float: right;
+  list-style: none;
+}
+footer ul li {
+  float: left;
+}
+
+.background-img {
+  background-size: 100%;
+  -webkit-filter: contrast(130%);
+}
+
+.bright-text {
+  color: rgb(255, 255, 255); /* Цвет текста */
+  font-weight: 800;
+}
+
+
+.btn-grd {
+  @include border-radius(5px);
+  &:hover{
+    @include bold-text;
+    -webkit-filter: saturate(60%) brightness(110%);
+    background: linear-gradient(to right, #3941fe, #f11a21);
+  }
+}
+
+
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+  line-height: 0.7;
 }

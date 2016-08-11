@@ -1,16 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html">
 <head>
-  <title>Storage</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container" style="padding-top:20px;">
+  <div class="container-fluid" style="padding-top:20px;">
     <%= render 'layouts/header' %>
     <%= yield %>
     <%= render 'layouts/footer' %>
   </div>
+  <!--<script src="image_switcher.js.erb"></script>-->
+  <%= yield :javascript_includes %>
+
 </body>
 </html>

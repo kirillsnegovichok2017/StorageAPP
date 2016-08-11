@@ -9,10 +9,10 @@
         Actions<b class="caret"></b>
       </a>
       <ul class="dropdown-menu">
-        <li><%= button_to "Delete", record, method: :delete, class:'btn', data: { confirm: "Are you sure that you with to delete #{record.name}?" }%></li>
-        <li><%= button_to "Rename", record, method: :delete, class:'btn', data: { confirm: "Are you sure that you with to rename #{record.name}?" }%></li>
+        <li><%= button_to "Delete", record, method: :delete, class:'btn btn-block btn-danger', data: { confirm: "Are you sure that you with to delete #{record.name}?" }%></li>
+        <li><%= button_to "Rename", record, method: :delete, class:'btn btn-block', data: { confirm: "Are you sure that you with to rename #{record.name}?" }%></li>
         <li class="divider"></li>
-        <li><%= link_to 'share', record_path, method: 'link', class: "btn" %> </li>
+        <li><%= link_to 'share', record_path, method: 'link', class: 'btn btn-block ' %> </li>
       </ul>
   </td>
 </tr>

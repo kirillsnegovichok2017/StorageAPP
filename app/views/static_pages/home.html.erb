@@ -1,5 +1,14 @@
-<div class="jumbotron text-center">
-  <div class="page-header"><h1>Storage App</h1></div>
-  <p>Your data cloud storage. Store and share with your fellows!</p>
-  <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+<% provide(:title, 'Home') %>
+
+<% if logged_in? %>
+
+<% else %>
+<div class="jumbotron text-center background-img">
+  <div class="bright-text">
+    <div class="page-header"><h1>Storage App</h1></div>
+    <p>Your data cloud storage. Store and share with your fellows!</p>
+    <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary btn-grd' %>
+  </div>
 </div>
+
+<% end %>
