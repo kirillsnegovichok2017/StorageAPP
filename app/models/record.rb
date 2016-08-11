@@ -1,4 +1,5 @@
 class Record < ActiveRecord::Base
+  include ActionView::Helpers::NumberHelper
   belongs_to :folder
 
   mount_uploader :attachment, FileUploader # Tells rails to use this uploader for this model.
@@ -19,11 +20,15 @@ class Record < ActiveRecord::Base
   end
 
   def size
-    File.size(path)
+    number_to_human_size(File.size(path))
   end
 
   def type
     File.ftype(path)
+  end
+
+  def owner
+    folder.user.name
   end
 
 end
