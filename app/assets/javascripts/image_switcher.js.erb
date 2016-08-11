@@ -1,0 +1,24 @@
+function ImageSwitcher(images, id) {
+    this.i = 0;
+    this.images = images;
+    this.image = $(id);
+    this.switchImage = function (i) {
+        this.image.css('background-image', 'url(' + this.images[i] +')');
+    };
+
+    this.slide = function (switchInt, fadeInt) {
+        setInterval(function(){
+            this.image.fadeOut(fadeInt, function () {
+                this.switchImage(i);
+                this.i += 1;
+                this.image.fadeIn(fadeInt);
+            });
+            if(i == this.images.length)
+                i = 0;
+        }, switchInt);
+    };
+
+    this.switchImage(0);
+};
+
+imageSwitcher =
