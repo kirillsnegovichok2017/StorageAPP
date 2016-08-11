@@ -53,6 +53,27 @@ $frame-opacity: 0.5;
 }
 
 
+.background-img {
+  background-size: 100%;
+  -webkit-filter: contrast(130%);
+}
+
+.bright-text {
+  color: rgb(255, 255, 255); /* Цвет текста */
+  font-weight: 800;
+}
+
+
+.btn-grd {
+  @include border-radius(5px);
+  &:hover{
+    @include bold-text;
+    -webkit-filter: saturate(60%) brightness(110%);
+    background: linear-gradient(to right, #3941fe, #f11a21);
+  }
+}
+
+
 /*upload button styles*/
 
 
@@ -147,4 +168,41 @@ p {
   font-size: 1.1em;
   line-height: 1.7em;
   line-height: 0.7;
+}
+
+
+
+/* folder */
+
+@mixin file-like {
+  background-repeat: no-repeat;
+  background-size: contain;
+  min-width: 50px;
+  max-width: 100px;
+  color: rgb(0, 0, 0); /* Цвет текста */
+  font-weight: 800;
+  align-items: center;
+  p {
+    margin-bottom: 30px;
+  }
+}
+
+.folder {
+  @include file-like;
+  background-image: url('folder-blue_Clipart_svg_File.svg');
+}
+
+.file {
+  @include file-like;
+  background-image: url('file.jpg');
+}
+
+.add-to-folder {
+  background-image: url('add_to_folder2.png');
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+.table-rounded {
+  @include border-radius(5px);
 }

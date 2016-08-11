@@ -20,7 +20,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @records = @user.folder.records
+    @folder = @user.folder
+    @records = @folder.records
   end
 
 

@@ -8,6 +8,7 @@ class FoldersController < ApplicationController
   end
 
   def new
+    @folder = Folder.new
   end
 
   def create
