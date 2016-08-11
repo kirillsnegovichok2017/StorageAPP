@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'sessions/new'
 
   root                 'static_pages#home'
 
@@ -20,6 +19,7 @@ Rails.application.routes.draw do
   # delete 'record' => 'records#destroy'
   resources :users, only: [:create, :show]
   resources :records, only: [:new, :create, :destroy]
+  resources :folders, only: [:new, :create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
