@@ -1,61 +1,52 @@
 <% environment.context_class.instance_eval { include StaticPagesHelper } %>
-/*
-function ImageSwitcher(images_path, selector) {
+
+function ImageSwitcher(images_path, selector, switchInt) {
     this.i = 0;
     this.images_path = images_path;
     this.elem = $(selector);
+    this.switchInt = switchInt;
 
-
-    this.switchImage = function (i) {
+    this.chooseBackgroundImage = function (i) {
         this.elem.css('background-image', 'url(' + this.images_path[i] +')');
     };
 
-    this.nextImage = function(fadeInt){
-        this.switchImage(this.i);
-        this.i += 1;
-        this.elem.fadeIn(fadeInt);
+    this.next_image = function () {
+      this.chooseBackgroundImage(this.i++);
+      if(this.i == this.images_path.length - 1)
+        this.i = 0;
     };
 
-    this.intFunc = function (fadeInt) {
-        this.elem.fadeOut(fadeInt, this.nextImage(fadeInt));
-        if(this.i == this.images_path.length)
-          this.i = 0;
+    this.switch = function () {
+      this.elem.fadeOut(0);
+      this.next_image();
+      this.elem.fadeIn(0);
     };
 
-    this.slide = function (switchInt, fadeInt) {
-        setInterval(this.intFunc(fadeInt), switchInt);
+    this.slide_images = function () {
+      this.chooseBackgroundImage(0);
+      setInterval( this.switch, this.switchInt);
     };
-
-    this.switchImage(0);
 }
-*/
-$(window).load(function () {
-  //var imageSwitcher = new ImageSwitcher(<%= raw images_path %>, '.jumbotron');
-  //  imageSwitcher.slide(4000, 5000);
-  //alert('here');
+
+
+var rotate_images = function () {
   var i = 0;
-  var fadeInt = 1000;
   var switchInt = 5000;
   var images_path = <%= raw images_path("static_pages") %>;
   var elem = $('.background-img');
 
   elem.css('background-image', 'url(' + images_path[i] +')');
-//  setInterval(function () {
-//    elem.fadeOut(fadeInt, function () {
-//      elem.css('background-image', 'url(' + images_path[i++] +')');
-//      elem.fadeIn(fadeInt);
-//      if(i == images_path.length - 1)
-//        i = 0;
-//    });
-//  }, switchInt);
 
   setInterval(function () {
     elem.fadeOut(0);
     elem.css('background-image', 'url(' + images_path[i++] +')');
     elem.fadeIn(0);
     if(i == images_path.length - 1)
-        i = 0;
+      i = 0;
   }, switchInt);
 
+};
 
-});
+imageSwitcher = new ImageSwitcher(<%= raw images_path("static_pages") %>, '.background-img', 5000);
+$(document).ready(rotate_images);
+$(document).on('turbolinks:load', rotate_images);

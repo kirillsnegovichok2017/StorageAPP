@@ -6,14 +6,14 @@
   <td><%= record.owner%></td>
 
   <td class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
+      <button class="dropdown-toggle btn btn-default" type="button" data-toggle="dropdown" >
         Actions<b class="caret"></b>
-      </a>
+      </button>
       <ul class="dropdown-menu">
-        <li><%= button_to "Delete", record, method: :delete, class:'btn btn-block btn-danger', data: { confirm: "Are you sure that you with to delete #{record.name}?" }%></li>
-        <li><%= button_to "Rename", record, method: :delete, class:'btn btn-block', data: { confirm: "Are you sure that you with to rename #{record.name}?" }%></li>
+        <li><%= button_to "Delete", record, method: :delete, class:'btn btn-block btn-link', data: { confirm: "Are you sure that you with to delete #{record.name}?" }%></li>
+        <li><%= button_to "Rename", record, method: :delete, class:'btn btn-block btn-link', data: { confirm: "Are you sure that you with to rename #{record.name}?" }%></li>
         <li class="divider"></li>
-        <li><%= link_to 'share', record_path, method: 'link', class: 'btn btn-block ' %> </li>
+        <li><%= button_to 'share', record,  method: :link, class: 'btn btn-block btn-link' %> </li>
       </ul>
   </td>
 </tr>
