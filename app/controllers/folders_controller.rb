@@ -13,8 +13,16 @@ class FoldersController < ApplicationController
   end
 
   def create
+    #@folder = current_user.fo
   end
 
   def destroy
+  end
+
+
+  private
+
+  def record_params
+    params.require(:folder).permit(:name)
   end
 end
