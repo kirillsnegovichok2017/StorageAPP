@@ -5,6 +5,7 @@ class FoldersController < ApplicationController
   before_action :ownership_filter, unless: [:new]
 
   def index
+    @folders = current_user.folders
   end
 
   def new

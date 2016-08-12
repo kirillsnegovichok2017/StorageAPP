@@ -21,5 +21,6 @@ class User < ActiveRecord::Base
   private
   def create_root_folder
     create_folder(name: "root", info: "root folder")
+    #folders.create(name: "root", info: "root")
   end
 end
