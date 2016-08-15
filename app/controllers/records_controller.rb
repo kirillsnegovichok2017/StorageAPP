@@ -33,9 +33,10 @@ class RecordsController < ApplicationController
   end
 
   def create_record(record_params)
-    folder = Folder.new(record_params)
-    folder.user_id = current_user.id
-    folder.folder_id = params[:folder_id]
+    record = Record.new(record_params)
+    record.user_id = current_user.id
+    record.folder_id = params[:folder_id]
+    return record
   end
 
 end

@@ -3,6 +3,6 @@
     <%= image_tag('folder_icon_light_blue.png', size:'64x64', alt:'folder') %><%= folder.name %>
     <%= render(partial: 'folders/new_item', locals: {folder:folder}) %>
   </td>
-  <td><%= render( partial: 'folders/folders', locals: { folder: folder,  folders: folder.folders }) if folder.folders %></td>
-  <td><%= render( partial: 'records/records', locals: { folder: folder,  records: folder.records }) if folder.records %></td>
+  <td><%= render( partial: 'folders/folders', locals: { folder: folder,  folders: folder.folders }) if folder.has_child_folders? %></td>
+  <td><%= render( partial: 'records/records', locals: { folder: folder,  records: folder.records }) if folder.has_child_records? %></td>
 </tr>

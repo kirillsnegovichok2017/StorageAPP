@@ -39,5 +39,6 @@ class FoldersController < ApplicationController
     folder = Folder.new(folder_params)
     folder.user_id = current_user.id
     folder.folder_id = params[:folder_id]
+    return folder
   end
 end

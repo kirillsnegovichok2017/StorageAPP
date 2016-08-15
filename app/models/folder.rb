@@ -14,4 +14,12 @@ class Folder < ActiveRecord::Base
     user.name
   end
 
+  def has_child_folders?
+    return folders.any?
+  end
+
+  def has_child_records?
+    return records.any?
+  end
+
 end
