@@ -4,6 +4,7 @@
         <%= render 'shared/error_messages', object: f.object %>
         <%=f.label :name %>
         <%= f.text_field :name, class: 'form-control'%>
+        <%= hidden_field_tag 'parent_id', @parent_id %>
         <%= f.submit "Save", class: "btn btn-primary" %>
 
     <% end %>

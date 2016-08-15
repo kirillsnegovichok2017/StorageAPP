@@ -2,7 +2,7 @@ class RecordsController < ApplicationController
   include SessionsHelper
 
   before_action :authorization_filter
-  before_action :ownership_filter, unless: [:new]
+  #before_action :ownership_filter, unless: [:new]
 
   def index
     @records = Folder.find_by(folder_id: params[:folder_id])
@@ -10,6 +10,7 @@ class RecordsController < ApplicationController
 
   def new
     @record = Record.new
+    @parent_id = params[:folder_id]
   end
 
   def create
@@ -34,8 +35,7 @@ class RecordsController < ApplicationController
 
   def create_record(record_params)
     record = Record.new(record_params)
-    record.user_id = current_user.id
-    record.folder_id = params[:folder_id]
+    record.folder_id = params[:parent_id]
     return record
   end
 
