@@ -1,7 +1,7 @@
 <tr>
-  <td class="folder">
-    <p><%= folder.name %></p>
-    <p><%= folder.owner %></p>
+  <td>
+    <%= image_tag('folder_icon_light_blue.png', size:'64x64', alt:'folder') %><%= folder.name %>
+    <%= render(partial: 'folders/new_item', locals: {folder:folder}) %>
   </td>
   <td><%= render( partial: 'folders/folders', locals: { folder: folder,  folders: folder.folders }) if folder.folders %></td>
   <td><%= render( partial: 'records/records', locals: { folder: folder,  records: folder.records }) if folder.records %></td>
