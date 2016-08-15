@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_one :folder, dependent: :destroy
   has_many :records, through: :folder
+  has_many :folders, through: :folder
+
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -15,12 +17,12 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
   # def root_folder
-  #   folders.find_by(name: 'root')
+  #   #folders.find_by(name: 'root')
   # end
 
   private
   def create_root_folder
-    create_folder(name: "root", info: "root folder")
-    #folders.create(name: "root", info: "root")
+    create_folder(name: 'root', info: 'root')
+    #folders.create(name: 'root', info: 'root')
   end
 end

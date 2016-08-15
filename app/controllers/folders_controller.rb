@@ -5,7 +5,8 @@ class FoldersController < ApplicationController
   before_action :ownership_filter, unless: [:new]
 
   def index
-    @folders = current_user.folders
+    @folder = current_user.folder
+    @folders = Folder.find(params[:folder_id])
   end
 
   def new
@@ -13,16 +14,29 @@ class FoldersController < ApplicationController
   end
 
   def create
-    #@folder = current_user.fo
+    @folder = create_folder(folder_params)
+    if @folder.save
+      redirect_to current_user, notice: "The folder #{@folder.name} has been created."
+    else
+      render 'new'
+    end
   end
 
   def destroy
+    Folder.find(params[:folder_id]).destroy
+    redirect_to current_user, notice: "The folder #{@folder.name} has been deleted."
   end
 
 
   private
 
-  def record_params
+  def folder_params
     params.require(:folder).permit(:name)
+  end
+
+  def create_folder(folder_params)
+    folder = Folder.new(folder_params)
+    folder.user_id = current_user.id
+    folder.folder_id = params[:folder_id]
   end
 end

@@ -21,7 +21,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @folder = @user.folder
-    @records = @folder.records
   end
 
 

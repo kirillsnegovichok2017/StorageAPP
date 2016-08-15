@@ -1,6 +1,8 @@
 class Folder < ActiveRecord::Base
   belongs_to :user
+  belongs_to :folder
   has_many :records, dependent: :destroy
+  has_many :folders, dependent: :destroy
 
   validates :name, presence: true , length: {maximum: 255 }
   #validates :info, presence: true

@@ -5,8 +5,7 @@ class RecordsController < ApplicationController
   before_action :ownership_filter, unless: [:new]
 
   def index
-    #@records = Record.all
-    @records = current_user.folder.records.all
+    @records = Folder.find_by(folder_id: params[:folder_id])
   end
 
   def new
@@ -14,10 +13,8 @@ class RecordsController < ApplicationController
   end
 
   def create
-    #@record = Record.new(record_params)
-    @record = current_user.folder.records.build(record_params)
+    @record = create_record(record_params)
     if @record.save
-      #redirect_to records_path, notice: "The record #{@record.name} has been uploaded."
       redirect_to current_user, notice: "The record #{@record.name} has been uploaded."
     else
       render 'new'
@@ -25,9 +22,7 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    @record = Record.find(params[:id])
-    @record.destroy
-    #redirect_to records_path, notice: "The record #{@record.name} has been deleted."
+    @record = Record.find(params[:id]).destroy
     redirect_to current_user, notice: "The record #{@record.name} has been deleted."
   end
 
@@ -35,6 +30,12 @@ class RecordsController < ApplicationController
 
   def record_params
     params.require(:record).permit(:attachment)
+  end
+
+  def create_record(record_params)
+    folder = Folder.new(record_params)
+    folder.user_id = current_user.id
+    folder.folder_id = params[:folder_id]
   end
 
 end
