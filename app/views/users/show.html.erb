@@ -4,4 +4,4 @@
 </div>
 <%= render 'shared/flash_error' %>
 <%= render 'shared/flash_notice' %>
-<%= render 'folders/folders' %>
+<%= render(partial:'folders/folder', locals:{folder: @root}) %>

@@ -3,6 +3,6 @@
     <p><%= folder.name %></p>
     <p><%= folder.owner %></p>
   </td>
-  <td><%= render 'folders/folders' %></td>
-  <td><%= render 'records/records' %></td>
+  <td><%= render( partial: 'folders/folders', locals: { folders: folder.folders }) if folder.folders %></td>
+  <td><%= render( partial: 'records/records', locals: { records: folder.records }) if folder.records %></td>
 </tr>

@@ -2,6 +2,7 @@ class Record < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   belongs_to :folder
 
+
   mount_uploader :attachment, FileUploader # Tells rails to use this uploader for this model.
   #validates :attachment, presence: true
   validates :folder_id, presence: true

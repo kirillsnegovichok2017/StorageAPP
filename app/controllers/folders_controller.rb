@@ -5,8 +5,9 @@ class FoldersController < ApplicationController
   before_action :ownership_filter, unless: [:new]
 
   def index
-    @folder = current_user.folder
-    @folders = Folder.find(params[:folder_id])
+    @root = current_user.folder
+    #@folders = Folder.where(folder_id: params[:folder_id])
+    #@records = @folder.records
   end
 
   def new

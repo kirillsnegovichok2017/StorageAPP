@@ -177,7 +177,7 @@ p {
 @mixin file-like {
   background-repeat: no-repeat;
   background-size: contain;
-  min-width: 50px;
+  min-width: 30px;
   max-width: 100px;
   color: rgb(0, 0, 0); /* Цвет текста */
   font-weight: 800;
