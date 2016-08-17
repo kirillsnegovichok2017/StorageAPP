@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812112513) do
+ActiveRecord::Schema.define(version: 20160816105050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,10 +19,11 @@ ActiveRecord::Schema.define(version: 20160812112513) do
   create_table "folders", force: :cascade do |t|
     t.string   "name"
     t.text     "info"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "user_id"
     t.integer  "folder_id"
+    t.boolean  "root",       default: false
   end
 
   add_index "folders", ["folder_id"], name: "index_folders_on_folder_id", using: :btree

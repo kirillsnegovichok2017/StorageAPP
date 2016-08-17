@@ -1,12 +1,20 @@
-<table class="table table-striped" >
-  <thead>
-  <tr>
-    <th>Folder</th>
-    <th>Content</th>
-    <th>&nbsp;</th>
-  </tr>
-  </thead>
-  <tbody>
-  <%= render folders  %>
-  </tbody>
-</table>
+<% if folder.root? %>
+  <table class="table table-striped" >
+    <thead>
+    <tr>
+      <th>Folder</th>
+      <th>Content</th>
+      <th>&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%= render folders  %>
+    </tbody>
+  </table>
+<% else %>
+    <td>
+      <%= render folders  %>
+    <td>
+<% end %>
+
+
