@@ -1,0 +1,18 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://coffeescript.org/
+<% environment.context_class.instance_eval { include StaticPagesHelper } %>
+
+$(document).on "turbolinks:load", ->
+  i = 0
+  switchInt = 5000
+  images_path = <%= raw images_path("static_pages") %>
+  #alert img for img in images_path
+  elem = $('.background-img')
+  elem.css('background-image', "url(" + images_path[i] + ")");
+  setInterval ->
+    elem.fadeOut(0)
+    elem.css('background-image', "url(" + images_path[i++] + ")");
+    elem.fadeIn(0);
+    i = 0 if i == images_path.length - 1
+  , switchInt
