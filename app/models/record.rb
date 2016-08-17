@@ -13,15 +13,7 @@ class Record < ActiveRecord::Base
   end
 
   def path
-    #attachment.current_path
-    parent = folder
-    _path = parent.name
-    while not parent.root?
-      _path = "#{parent.name}/" + _path
-      parent = parent.folder
-    end
-    _path = "#{parent.user.name}/" + _path
-    _path
+    attachment.current_path
   end
 
   def name
