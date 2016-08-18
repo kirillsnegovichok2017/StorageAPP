@@ -14,7 +14,7 @@ class RecordsController < ApplicationController
   end
 
   def create
-    @record = create_record(record_params)
+    @record = new_record(record_params)
     if @record.save
       redirect_to current_user, notice: "The record #{@record.name} has been uploaded."
     else
@@ -23,7 +23,8 @@ class RecordsController < ApplicationController
   end
 
   def destroy
-    @record = Record.find(params[:id]).destroy
+    @record = Record.find(params[:id])
+    @record.destroy
     redirect_to current_user, notice: "The record #{@record.name} has been deleted."
   end
 
@@ -33,7 +34,7 @@ class RecordsController < ApplicationController
     params.require(:record).permit(:attachment)
   end
 
-  def create_record(record_params)
+  def new_record(record_params)
     record = Record.new(record_params)
     record.folder_id = params[:parent_id]
     return record

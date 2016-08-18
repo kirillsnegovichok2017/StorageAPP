@@ -24,19 +24,4 @@ class Folder < ActiveRecord::Base
     return (root.nil? or root==false) ? false : true
   end
 
-  def path
-    if root?
-      return user.name
-    end
-    _path = name
-    parent = folder
-
-    while not parent.root?
-      _path = "#{parent.name}/" + _path
-      parent = parent.folder
-    end
-    _path = "#{parent.user.name}/" + _path
-    _path
-  end
-
 end

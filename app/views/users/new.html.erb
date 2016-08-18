@@ -4,22 +4,22 @@
 </div>
 
 <div class="row">
-  <div class="jumbotron col-md-6 col-md-offset-3">
+  <div class="jumbotron col-md-6 col-md-offset-3 background-img">
     <%= form_for(@user) do |f| %>
         <%= render 'shared/error_messages', object: f.object %>
-        <%= f.label :name %>
+        <%= f.label :name , class: 'bright-text'%>
         <%= f.text_field :name, class: 'form-control' %>
 
-        <%= f.label :email%>
+        <%= f.label :email, class: 'bright-text'%>
         <%= f.email_field :email, class: 'form-control' %>
 
-        <%= f.label :password %>
+        <%= f.label :password, class: 'bright-text' %>
         <%= f.password_field :password, class: 'form-control' %>
 
-        <%= f.label :password_confirmation %>
+        <%= f.label :password_confirmation, class: 'bright-text' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
 
-        <%= f.submit 'Create account', class: 'btn btn-primary' %>
+        <%= f.submit 'Create account', class: 'btn btn-primary bright-text' %>
     <% end %>
   </div>
 </div>

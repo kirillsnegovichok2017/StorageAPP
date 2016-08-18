@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   before_save {email.downcase!}
   after_create :create_root_folder
 
-  has_one :folder, dependent: :destroy
+  has_one :root, -> { where(root: true) }, dependent: :destroy, class_name: 'Folder'
   has_many :records, through: :folder
-  has_many :folders, through: :folder
+  has_many :folders, class_name: 'Folder'
 
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -16,13 +16,9 @@ class User < ActiveRecord::Base
   #validates :folder_id, presence: true
   validates :password, length: { minimum: 6 }
 
-  # def root_folder
-  #   #folders.find_by(name: 'root')
-  # end
-
   private
   def create_root_folder
-    create_folder(name: '/', root: true)
+    create_root(name: '/', root: true)
     #folders.create(name: 'root', info: 'root')
   end
 end

@@ -6,15 +6,15 @@
   <div class="jumbotron col-md-6 col-md-offset-3 background-img">
     <%= form_for(:session, url: login_path) do |f| %>
         <%= render 'shared/flash_error' %>
-        <%= f.label :email%>
+        <%= f.label :email, class: 'bright-text'%>
         <%= f.email_field :email, class: 'form-control' %>
 
-        <%= f.label :password %>
+        <%= f.label :password, class: 'bright-text' %>
         <%= f.password_field :password, class: 'form-control' %>
 
-        <%= f.submit 'Log in', class: 'btn btn-primary btn-grd' %>
+        <%= f.submit 'Log in', class: 'btn btn-primary btn-grd bright-text' %>
     <% end %>
-    <p><small class="h6">New user? <%= link_to 'Sign up now!', signup_path %></small></p>
+    <p class="bright-text"><small class="h6">New user? <%= link_to 'Sign up now!', signup_path, class: 'bright-text' %></small></p>
   </div>
 </div>
 

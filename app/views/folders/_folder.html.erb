@@ -8,7 +8,7 @@
     <tr>
       <td>
         <%= image_tag('folder_icon_light_blue.png', size:'64x64', alt:'folder', class: 'folder-image', id: "folder_#{folder.id}" ) %><%= folder.name %>
-        <%= render(partial: 'folders/new_item', locals: {folder:folder}) %>
+        <%= render(partial: 'folders/actions', locals: {folder:folder}) %>
         <% has_child_folders = folder.has_child_folders? %>
         <% has_child_records = folder.has_child_records? %>
         <% if has_child_folders or has_child_records %>
