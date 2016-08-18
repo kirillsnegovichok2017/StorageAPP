@@ -3,5 +3,5 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on "turbolinks:load", ->
-  $('.folder-image').dblclick ->
-    $('.folder').toggle()
+  $('.folder-image').dblclick (event) ->
+    $("##{event.target.id}").siblings().toggle()

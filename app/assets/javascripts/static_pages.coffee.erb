@@ -7,12 +7,16 @@ $(document).on "turbolinks:load", ->
   i = 0
   switchInt = 5000
   images_path = <%= raw images_path("static_pages") %>
-  #alert img for img in images_path
   elem = $('.background-img')
-  elem.css('background-image', "url(" + images_path[i] + ")");
+
+  chose_background_image = (i) ->
+    elem.css('background-image', "url(" + images_path[i] + ")");
+
+  chose_background_image(i)
+
   setInterval ->
     elem.fadeOut(0)
-    elem.css('background-image', "url(" + images_path[i++] + ")");
+    chose_background_image(i++)
     elem.fadeIn(0);
     i = 0 if i == images_path.length - 1
   , switchInt

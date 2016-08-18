@@ -1,8 +1,27 @@
-<tr>
-  <td>
-    <%= image_tag('folder_icon_light_blue.png', size:'64x64', alt:'folder') %><%= folder.name %>
-    <%= render(partial: 'folders/new_item', locals: {folder:folder}) %>
-  </td>
-  <td><%= render( partial: 'folders/folders', locals: { folder: folder,  folders: folder.folders }) if folder.has_child_folders? %></td>
-  <td><%= render( partial: 'records/records', locals: { folder: folder,  records: folder.records }) if folder.has_child_records? %></td>
-</tr>
+<table class="table" >
+  <thead>
+  <tr>
+    <th>Folder</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= image_tag('folder_icon_light_blue.png', size:'64x64', alt:'folder', class: 'folder-image', id: "folder_#{folder.id}" ) %><%= folder.name %>
+        <%= render(partial: 'folders/new_item', locals: {folder:folder}) %>
+        <% has_child_folders = folder.has_child_folders? %>
+        <% has_child_records = folder.has_child_records? %>
+        <% if has_child_folders or has_child_records %>
+          <td>
+            <% if has_child_folders %>
+              <%= render( partial: 'folders/folders', locals: { folder: folder,  folders: folder.folders })  %>
+            <% end %>
+            <% if has_child_records %>
+              <%= render( partial: 'records/records', locals: { folder: folder,  records: folder.records })  %>
+            <% end %>
+          </td>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

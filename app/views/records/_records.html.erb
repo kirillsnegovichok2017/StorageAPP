@@ -1,17 +1,19 @@
-<br />
 <table class="table table-striped table-rounded" >
-  <thead>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Download Link</th>
+      <th>Type</th>
+      <th>Size</th>
+      <!--<th>Owner</th>-->
+      <th>&nbsp;</th>
+    </tr>
+    </thead>
+    <tbody>
   <tr>
-    <th>Name</th>
-    <th>Download Link</th>
-    <th>Type</th>
-    <th>Size</th>
-    <!--<th>Owner</th>-->
-    <th>&nbsp;</th>
+    <td>
+      <%= render records %>
+    </td>
   </tr>
-  </thead>
-  <tbody>
-    <%= render records %>
-  </tbody>
+    </tbody>
 </table>
-

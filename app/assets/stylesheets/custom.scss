@@ -170,39 +170,27 @@ p {
   line-height: 0.7;
 }
 
-
-
 /* folder */
 
-@mixin file-like {
-  background-repeat: no-repeat;
-  background-size: contain;
-  min-width: 30px;
-  max-width: 100px;
-  color: rgb(0, 0, 0); /* Цвет текста */
-  font-weight: 800;
-  align-items: center;
-  p {
-    margin-bottom: 30px;
-  }
+//@mixin file-like {
+//  background-repeat: no-repeat;
+//  background-size: contain;
+//  min-width: 30px;
+//  max-width: 100px;
+//  color: rgb(0, 0, 0); /* Цвет текста */
+//  font-weight: 800;
+//  align-items: center;
+//  p {
+//    margin-bottom: 30px;
+//  }
+//}
+
+.folder-image {
 }
 
-.folder {
-  @include file-like;
-  background-image: url('folder-blue_Clipart_svg_File.svg');
+.folder{
+  display: none;
 }
 
-.file {
-  @include file-like;
-  background-image: url('file.jpg');
-}
-
-.add-to-folder {
-  background-image: url('add_to_folder2.png');
-  background-position:center;
-  background-repeat:no-repeat;
-}
-
-.table-rounded {
-  @include border-radius(5px);
+.record {
 }

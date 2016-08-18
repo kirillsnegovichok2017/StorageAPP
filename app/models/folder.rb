@@ -21,7 +21,7 @@ class Folder < ActiveRecord::Base
   end
 
   def root?
-    root
+    return (root.nil? or root==false) ? false : true
   end
 
   def path
