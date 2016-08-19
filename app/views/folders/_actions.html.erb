@@ -5,7 +5,9 @@
     <!--<li><%= link_to 'File', new_record_path%></li>-->
     <li><%= link_to 'File',   {controller: 'records', action: 'new', folder_id: folder.id } %></li>
     <li><%= link_to 'Folder', {controller:'folders', action:'new',   folder_id: folder.id } %></li>
-    <li class="divider"></li>
-    <li><%= link_to 'Delete', folder_path(folder), method: :delete, data: { confirm: "Are you sure that you with to delete #{folder.name}?" }%></li>
+    <% if (not folder.root?) %>
+      <li class="divider"></li>
+      <li><%= link_to 'Delete', folder_path(folder), method: :delete, data: { confirm: "Are you sure that you with to delete #{folder.name}?" } %></li>
+    <% end %>
   </ul>
 </div>

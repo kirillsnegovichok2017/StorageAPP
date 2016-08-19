@@ -4,4 +4,4 @@
 
 $(document).on "turbolinks:load", ->
   $('.folder-image').dblclick (event) ->
-    $("##{event.target.id}").siblings().toggle()
+    $("##{event.target.id}").parent().siblings().toggle()

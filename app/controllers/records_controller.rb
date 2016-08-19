@@ -37,6 +37,7 @@ class RecordsController < ApplicationController
   def new_record(record_params)
     record = Record.new(record_params)
     record.folder_id = params[:parent_id]
+    record.user_id = current_user.id
     return record
   end
 

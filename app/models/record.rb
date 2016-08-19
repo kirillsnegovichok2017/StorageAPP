@@ -1,7 +1,7 @@
 class Record < ActiveRecord::Base
   include ActionView::Helpers::NumberHelper
   belongs_to :folder
-
+  belongs_to :user
 
   mount_uploader :attachment, FileUploader # Tells rails to use this uploader for this model.
   #validates :attachment, presence: true
@@ -29,7 +29,7 @@ class Record < ActiveRecord::Base
   end
 
   def owner
-    folder.user.name
+    user
   end
 
 end

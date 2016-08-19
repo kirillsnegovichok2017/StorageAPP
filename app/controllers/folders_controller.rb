@@ -24,8 +24,12 @@ class FoldersController < ApplicationController
 
   def destroy
     @folder = Folder.find(params[:id])
-    @folder.destroy
-    redirect_to current_user, notice: "The folder #{@folder.name} has been deleted."
+    if not @folder.root?
+      @folder.destroy
+      redirect_to current_user, notice: "The folder #{@folder.name} has been deleted."
+    else
+      redirect_to current_user, notice: 'Deleting of the root folder is not permitted!'
+    end
   end
 
 
