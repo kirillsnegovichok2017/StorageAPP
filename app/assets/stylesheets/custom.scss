@@ -187,11 +187,23 @@ p {
 //}
 
 .folder-image {
+  &:hover {
+    -webkit-filter: brightness(110%);
+  }
 }
 
 .folder{
-  display: none;
+
 }
 
 .record {
+}
+
+td{
+  float: left;
+}
+
+
+td td{
+  float: none;
 }
