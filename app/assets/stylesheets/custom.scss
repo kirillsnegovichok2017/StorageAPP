@@ -192,9 +192,9 @@ p {
   }
 }
 
-.folder{
-
-}
+//.folder{
+//  float: left;
+//}
 
 .record {
 }
@@ -203,7 +203,6 @@ td{
   float: left;
 }
 
-
-td td{
+td .record{
   float: none;
 }
