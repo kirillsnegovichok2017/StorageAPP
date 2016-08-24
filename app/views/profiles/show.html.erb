@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= image_tag @user.gravatar_url %>
+    <h1><%=  @user.name  %></h1>
+  </div>
+  <div class="col-md-6">
+    <p>Birth Date: <% @user.birth_date %> <p>
+    <p>Country: <% @user.country %> <p>
+    <p>Language: <% @user.language %> <p>
+    <p>Mobile: <% @user.mobile %> <p>
+  </div>
+</div>

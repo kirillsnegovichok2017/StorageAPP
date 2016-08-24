@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819093216) do
+ActiveRecord::Schema.define(version: 20160824090505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,10 @@ ActiveRecord::Schema.define(version: 20160819093216) do
     t.string   "password_digest"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.datetime "birth_date"
+    t.string   "country"
+    t.string   "mobile"
+    t.string   "language"
   end
 
   add_foreign_key "folders", "folders"

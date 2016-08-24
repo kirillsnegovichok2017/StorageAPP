@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
-  include Gravastic
-  gravastic
+  include Gravtastic
+  gravtastic
   has_secure_password
 
 
   attr_accessor :reset_token
-  before_save {email.downcase!}
+  before_save :do_before_save
   after_create :create_root_folder
 
   has_one :root, -> { where(root: true) }, dependent: :destroy, class_name: 'Folder'
@@ -46,9 +46,21 @@ class User < ActiveRecord::Base
 
 
   private
+  def do_before_save
+    email.downcase!
+    add_pseudo_profile_data
+  end
+
   def create_root_folder
     create_root(name: '/', root: true)
     #folders.create(name: 'root', info: 'root')
+  end
+
+  def add_pseudo_profile_data
+    self.birth_date = Time.now.to_datetime
+    self.country = ' '
+    self.language = ' '
+    self.mobile = ' '
   end
 
 end
