@@ -5,4 +5,3 @@
 $(document).on "turbolinks:load", ->
   $('.folder-image').dblclick (event) ->
     $("##{event.target.id}").parent().siblings().toggle()
-  $('.record').css('float', 'right')

@@ -1,12 +1,19 @@
-<div class="row">
-  <div class="col-md-6">
-    <%= image_tag @user.gravatar_url %>
-    <h1><%=  @user.name  %></h1>
-  </div>
-  <div class="col-md-6">
-    <p>Birth Date: <% @user.birth_date %> <p>
-    <p>Country: <% @user.country %> <p>
-    <p>Language: <% @user.language %> <p>
-    <p>Mobile: <% @user.mobile %> <p>
+<div class="background-img bright-text">
+  <div class="row page_block page_info_wrap">
+    <div class="col-md-6">
+      <div class="col-md-3">
+        <%= image_tag @user.gravatar_url, class:'img-rounded' %>
+      </div>
+      <div class="col-md-3">
+        <h2 class="page_name"><%=  @user.name  %></h2>
+      </div>
+    </div>
+    <div class="col-md-6 page_block profile_info profile_info_short">
+      <%= link_to 'Edit profile', edit_profile_path(@user)%>
+      <div class="profile_info_row">Birth Date: <%= @user.birth_date %> </div>
+      <div class="profile_info_row">Country: <%= @user.country %></div>
+      <div class="profile_info_row">Language: <%= @user.language %></div>
+      <div class="profile_info_row">Mobile: <%= @user.mobile %> </div>
+    </div>
   </div>
 </div>

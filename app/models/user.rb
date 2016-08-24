@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
 
   attr_accessor :reset_token
-  before_save :do_before_save
+  before_save {email.downcase!}
   after_create :create_root_folder
 
   has_one :root, -> { where(root: true) }, dependent: :destroy, class_name: 'Folder'
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
   validates :email, presence: true, length: { maximum: 255 }, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensetive: false}
   #validates :folder_id, presence: true
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, on: :create
 
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
@@ -46,21 +46,9 @@ class User < ActiveRecord::Base
 
 
   private
-  def do_before_save
-    email.downcase!
-    add_pseudo_profile_data
-  end
 
   def create_root_folder
     create_root(name: '/', root: true)
     #folders.create(name: 'root', info: 'root')
   end
-
-  def add_pseudo_profile_data
-    self.birth_date = Time.now.to_datetime
-    self.country = ' '
-    self.language = ' '
-    self.mobile = ' '
-  end
-
 end
