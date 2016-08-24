@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Gravastic
+  gravastic
   has_secure_password
 
 
